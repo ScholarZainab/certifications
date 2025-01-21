@@ -92,6 +92,7 @@ body {
 .container {
   max-width: 90%;
   width: 100%;
+  height: 500px;
   aspect-ratio: 16/9;
   border: 7px solid #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -102,6 +103,7 @@ body {
 .image-box {
   display: flex;
   height: 100%;
+  width: 2600%;
   animation: imgBox 52s linear infinite;
 }
 
@@ -111,7 +113,7 @@ body {
 
 .image-box .image {
   flex: 0 0 auto;
-  width: 100%;
+  width: calc(100% / 26);
   height: 100%;
 }
 
@@ -129,7 +131,14 @@ body {
     transform: translateX(-100%);
   }
 }
-
+@keyframes imgBox {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -2500%; /* Adjusted for 26 images */
+  }
+}
 /* Media Query for Smaller Screens */
 @media (max-width: 768px) {
   .dynamic-txts {

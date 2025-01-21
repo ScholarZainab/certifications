@@ -47,21 +47,29 @@ body {
   white-space: nowrap;
   overflow: hidden;
   border-right: 2px solid #FC6D6D; /* Cursor effect */
-  animation: typing 3s steps(15, end), blink 0.5s step-end infinite, slide 12s infinite;
+  animation: typing 3s steps(15, end) forwards, blink 0.5s step-end infinite;
   opacity: 0; /* Initially hidden */
 }
 
 .dynamic-txts li:nth-child(1) {
   animation-delay: 0s;
+  animation: typing 3s steps(15, end) forwards, blink 0.5s step-end infinite, slide 12s infinite;
+  opacity: 1;
 }
+
 .dynamic-txts li:nth-child(2) {
   animation-delay: 3s;
+  animation: typing 3s steps(15, end) forwards, blink 0.5s step-end infinite, slide 12s infinite;
 }
+
 .dynamic-txts li:nth-child(3) {
   animation-delay: 6s;
+  animation: typing 3s steps(15, end) forwards, blink 0.5s step-end infinite, slide 12s infinite;
 }
+
 .dynamic-txts li:nth-child(4) {
   animation-delay: 9s;
+  animation: typing 3s steps(15, end) forwards, blink 0.5s step-end infinite, slide 12s infinite;
 }
 
 @keyframes typing {
@@ -85,61 +93,5 @@ body {
   }
   26%, 100% {
     opacity: 0;
-  }
-}
-
-/* Image Container */
-.container {
-  max-width: 90%;
-  width: 100%;
-  aspect-ratio: 16/9;
-  border: 7px solid #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.image-box {
-  display: flex;
-  height: 100%;
-  animation: imgBox 52s linear infinite;
-}
-
-.image-box:hover {
-  animation-play-state: paused;
-}
-
-.image-box .image {
-  flex: 0 0 auto;
-  width: 100%;
-  height: 100%;
-}
-
-.image-box img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-@keyframes imgBox {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-/* Media Query for Smaller Screens */
-@media (max-width: 768px) {
-  .dynamic-txts {
-    height: 50px;
-  }
-  .dynamic-txts li {
-    font-size: 1.2rem;
-  }
-  .container {
-    height: auto;
-    aspect-ratio: auto;
   }
 }

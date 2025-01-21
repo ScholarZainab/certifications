@@ -35,6 +35,10 @@ body {
   font-weight: 500;
   animation: slide 12s steps(4) infinite;
 }
+.dynamic-txts li span {
+  position: relative;
+}
+
 .dynamic-txts li span::after{
   content: "";
   position: absolute;
@@ -47,11 +51,11 @@ body {
 }
 @keyframes slide {
   100% {
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% * 4)); /* Steps adjust for 4 list items */
   }
 }
 .container {
-  max-width: 90%;
+  max-width: 100%;
   width: 100%;
   aspect-ratio: 16/9;
   border: 7px solid #fff;
@@ -79,7 +83,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-100% + 100vw);
   }
 }
 @media (max-width: 768px) {
@@ -87,6 +91,9 @@ body {
     font-size: 1rem;
   }
   .container {
+    max-width: 100%;
+    width: 100%;
+    min-height: 200px;
     height: auto;
     aspect-ratio: auto;
   }

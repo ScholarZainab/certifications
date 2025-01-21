@@ -1,8 +1,10 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -11,48 +13,57 @@ body {
   background: #7D2AE8;
   min-height: 100vh;
   padding: 20px;
+  font-family: Arial, sans-serif;
 }
+
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
+
 .wrapper .static-txt {
   color: #fff;
   font-size: clamp(1.5rem, 5vw, 3rem);
   font-weight: 400;
 }
+
 .dynamic-txts {
-  margin: 0;
+  position: relative;
   overflow: hidden;
-  height: 90px; /* Set height equal to one text line */
+  height: 60px; /* Adjust this for the height of one text line */
 }
+
 .dynamic-txts li {
   list-style: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   color: #FC6D6D;
   font-size: clamp(1rem, 4vw, 2rem);
   font-weight: 500;
-  position: absolute; /* Only one word is visible at a time */
-  top: 0;
-  left: 0;
-  width: 100%; /* Ensure full-width coverage for animation */
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflowing text */
-  animation: typing 3s steps(20, end), slide 12s infinite; /* Combine typing and sliding animations */
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #FC6D6D; /* Cursor effect */
+  animation: typing 3s steps(15, end), blink 0.5s step-end infinite, slide 12s infinite;
+  opacity: 0; /* Initially hidden */
 }
+
 .dynamic-txts li:nth-child(1) {
   animation-delay: 0s;
 }
 .dynamic-txts li:nth-child(2) {
-  animation-delay: 3s; /* Start after the first word finishes typing */
+  animation-delay: 3s;
 }
 .dynamic-txts li:nth-child(3) {
-  animation-delay: 6s; /* Start after the second word finishes typing */
+  animation-delay: 6s;
 }
 .dynamic-txts li:nth-child(4) {
-  animation-delay: 9s; /* Start after the third word finishes typing */
+  animation-delay: 9s;
 }
+
 @keyframes typing {
   from {
     width: 0;
@@ -61,6 +72,13 @@ body {
     width: 100%;
   }
 }
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 @keyframes slide {
   0%, 25% {
     opacity: 1;
@@ -70,44 +88,58 @@ body {
   }
 }
 
+/* Image Container */
 .container {
-  max-width: 100%;
+  max-width: 90%;
   width: 100%;
   aspect-ratio: 16/9;
   border: 7px solid #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  margin-top: 20px;
 }
+
 .image-box {
   display: flex;
   height: 100%;
   animation: imgBox 52s linear infinite;
 }
+
 .image-box:hover {
   animation-play-state: paused;
 }
+
 .image-box .image {
-  flex: 0 0 100%;
+  flex: 0 0 auto;
+  width: 100%;
   height: 100%;
 }
+
 .image-box img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
+
 @keyframes imgBox {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-2600%);
+    transform: translateX(-100%);
   }
 }
+
+/* Media Query for Smaller Screens */
 @media (max-width: 768px) {
+  .dynamic-txts {
+    height: 50px;
+  }
   .dynamic-txts li {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .container {
-    border-width: 3px;
+    height: auto;
+    aspect-ratio: auto;
   }
 }

@@ -92,7 +92,6 @@ body {
 .container {
   max-width: 90%;
   width: 100%;
-  height: 500px;
   aspect-ratio: 16/9;
   border: 7px solid #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
